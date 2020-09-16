@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutterapp/screens/AddTaskScreen.dart';
+import 'package:todo_flutterapp/widgets/TasksList.dart';
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -11,6 +13,11 @@ class _TaskScreenState extends State<TaskScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
+        onPressed: () {
+          print('FAB Pressed');
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTaskScreen());
+        },
         child: Icon(Icons.add),
       ),
       backgroundColor: Colors.lightBlueAccent,
@@ -55,10 +62,13 @@ class _TaskScreenState extends State<TaskScreen> {
               child: Container(
                 height: 300,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        topLeft: Radius.circular(20))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
+                ),
+                child: TasksList(),
               ),
             ),
           ],
